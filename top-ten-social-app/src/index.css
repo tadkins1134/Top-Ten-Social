@@ -1,0 +1,6 @@
+@import url('https://googleapis.com');
+@import "tailwindcss";
+
+@theme {
+  --font-medieval: "MedievalSharp", serif; /* Defines the utility class 'font-medieval' */
+}

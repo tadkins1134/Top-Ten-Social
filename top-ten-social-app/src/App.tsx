@@ -5,6 +5,7 @@ import AppLayout from "./layouts/AppLayout";
 import HomePage from "./pages/HomePage";
 import FriendsPage from "./pages/FriendsPage";
 import TopTenPage from "./pages/TopTenPage";
+import Backlog from "./pages/Backlog";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="top-ten" element={<TopTenPage />} />
           <Route path="friends" element={<FriendsPage />} />
+          <Route path="backlog" element={<Backlog />} />
         </Route>
       </Routes>
     </BrowserRouter>
