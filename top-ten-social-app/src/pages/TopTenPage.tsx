@@ -12,13 +12,13 @@ function TopTenPage() {
   };
 
   const availableGames = [
-  "Mario Kart",
-  "Mario Odyssey",
-  "Mario Wonder",
-  "Zelda Breath of the Wild",
-  "Zelda Tears of the Kingdom",
-  "Metroid Prime",
-];
+    "Mario Kart",
+    "Mario Odyssey",
+    "Mario Wonder",
+    "Zelda Breath of the Wild",
+    "Zelda Tears of the Kingdom",
+    "Metroid Prime",
+  ];
 
   //this is a state variable that holds an array of games, and a function to update that state.
   const [games, setGames] = useState<Game[]>([]);
@@ -44,7 +44,8 @@ function TopTenPage() {
   };
 
   const handleOnSubmit = (
-    e: React.FormEvent<HTMLFormElement>,) => {
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
     addGame(input);
   };
@@ -52,7 +53,11 @@ function TopTenPage() {
   const makeGameSuggestions = (input: string) => {
     console.log("running");
     if (input.trim().length >= 3) {
-      setGameSuggestions(availableGames.filter((game) => game.toLowerCase().includes(input.toLowerCase())));
+      setGameSuggestions(
+        availableGames.filter((game) =>
+          game.toLowerCase().includes(input.toLowerCase()),
+        ),
+      );
     } else {
       setGameSuggestions([]);
     }
@@ -63,8 +68,8 @@ function TopTenPage() {
   }, [input]);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-2 text-gray-800">
+    <div className="rounded-lg bg-white p-8">
+      <h1 className="text-3xl font-bold mb-2 text-gray-800 text-justify-center">
         Top Ten
       </h1>
       <p className="text-gray-500 mb-6">
@@ -83,28 +88,22 @@ function TopTenPage() {
           className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 
-        <ul className="space-y-1 mt-2">
-          {gameSuggestions.map((suggestion) => (
-            <li
-              key={suggestion}
-              onClick={() => {
-                //setInput(suggestion);
-                setGameSuggestions([]);
-                addGame(suggestion);
-              }}
-              className="cursor-pointer text-gray-600 hover:text-gray-800"
-            >
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-
-        {/* <button
-          onClick={addGame}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-        >
-          Add
-        </button> */}
+        {gameSuggestions.length > 0 && (
+          <ul className="flex-1 mt-1 border border-gray-300 rounded-lg shadow-md px-3 py-2 bg-white max-w-xs">
+            {gameSuggestions.map((suggestion) => (
+              <li
+                key={suggestion}
+                onClick={() => {
+                  setGameSuggestions([]);
+                  addGame(suggestion);
+                }}
+                className="p-3 rounded-md text-gray-600 cursor-pointer transition-colors duration-200 hover:bg-neutral-500 hover:text-white"
+              >
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
       </form>
 
       <ul className="space-y-3">
